@@ -36,11 +36,20 @@ const App = () => {
   }
 
   const useEquall = () => {
+
+    if((operator == "x" || operator == "/") && (previousResult == 0 || result == 0)){
+      return;
+    }
+
     setPreviousResult(calculate(previousResult,result,operator));
     setResult(0);
   }
 
   const useOperator = ( oper ) => {
+
+    if((operator == "x" || operator == "/") && (previousResult == 0 || result == 0)){
+      return;
+    }
 
     if(operator !== ""){
       setPreviousResult(calculate(previousResult,result,operator));
@@ -57,8 +66,8 @@ const App = () => {
 
   return (
     <>
-      <div className='bg-bgMain min-h-screen w-full grid place-content-center'>
-        <div className='w-[36rem] max-w-xl mx-auto flex flex-col gap-12'>
+      <div className='bg-bgMain min-h-screen h-full w-full grid place-content-center'>
+        <div className='w-full max-w-xl mx-auto flex flex-col gap-12'>
           <Header />
           <div className='flex flex-col gap-10'>
             <Screen result={result} previousResult={previousResult} />

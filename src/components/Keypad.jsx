@@ -19,9 +19,12 @@ const Keypad = ({ result, setResult, useOperator, setPreviousResult, setOperator
   }
 
   const delValue = () => {
-    if(result.length != 0){
+    if(result.length === 1 || result === 0){
+      setResult(0);
+    }else{
       setResult(result.slice(0,result.length-1));
     }
+
   }
 
   const handleOperator = (e) => {
